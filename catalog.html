@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>MarketGame's - Каталог игр</title>
+    <style>
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #ff0000;
+            padding-bottom: 15px;
+        }
+
+        .logo-link {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 1;
+            transition: 0.3s;
+        }
+
+        .logo-link:hover {
+            opacity: 0.8;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h1 { 
+            color: #ff0000; 
+            margin: 0;
+            font-family: 'Arial Black', sans-serif;
+            font-size: 28px;
+        }
+
+        .page-title {
+            color: white;
+            margin: 0;
+            font-family: 'Arial Black', sans-serif;
+            font-size: 24px;
+            flex: 2;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .header-spacer { flex: 1; }
+
+        .catalog-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 10px;
+        }
+
+        .game-card {
+            background-color: #1e1e1e;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            border-color: #ff0000;
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.2);
+        }
+
+        .game-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .game-info {
+            padding: 20px;
+        }
+
+        .game-info h3 {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        .game-details {
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 5px;
+        }
+
+        .game-details span {
+            color: #eee;
+        }
+
+        .rating {
+            color: #ffcc00;
+            margin: 15px 0;
+            font-size: 18px;
+        }
+
+        .price {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ff0000;
+            margin-bottom: 15px;
+        }
+
+        .details-btn {
+            display: block;
+            text-align: center;
+            background-color: #ff0000;
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .details-btn:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+ 
+<body>
+    
+    <header class="header-container">
+
+        <a href="Adam.html" class="logo-link">
+            <div class="logo-group">
+                <img src="images2.png" alt="Logo" style="width: 50px; height: 50px;">
+                <h1>MarketGame's</h1>
+            </div>
+        </a>
+        
+        <h2 class="page-title">Каталог игр</h2>
+        <div class="header-spacer"></div>
+    </header>
+
+    <main>
+        <div class="catalog-container">
+
+            <div class="game-card">
+                <img src="gta_sa_poster.jpg" alt="Игра 1">
+                <div class="game-info">
+                    <h3>GTA SA</h3>
+                    <div class="game-details">Жанр: <span>Action/3D-shooter</span></div>
+                    <div class="game-details">Разработчик: <span>Rockstar North</span></div>
+
+                    <div class="rating">★★★★★</div>
+                    
+                    <div class="price">1.599 ₽</div>
+                    
+                    <a href="description.html" class="details-btn">Подробнее</a>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <img src="images4.jpg" alt="Игра 2">
+                <div class="game-info">
+                    <h3>RDR 2</h3>
+                    <div class="game-details">Жанр: <span>Action/RPG</span></div>
+                    <div class="game-details">Разработчик: <span>Rockstar Games</span></div>
+                    
+                    <div class="rating">★★★★★</div>
+                    
+                    <div class="price">5.999 ₽</div>
+                    
+                    <a href="description2.html" class="details-btn">Подробнее</a>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <img src="images5.jpg" alt="Игра 3">
+                <div class="game-info">
+                    <h3>Granny</h3>
+                    <div class="game-details">Жанр: <span>Survival horror/puzzle</span></div>
+                    <div class="game-details">Разработчик: <span>DVloper</span></div>
+
+                    <div class="rating">★★★★★</div>
+
+                    <div class="price">499 ₽</div>
+
+                    <a href="description3.html" class="details-btn">Подробнее</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>

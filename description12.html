@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">  
+    <title>MarketGame's - Terraria</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .header-line {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+            padding: 10px 40px;
+            background-color: #222;
+            border-bottom: 2px solid #DAA520;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            flex: 1; 
+        }
+
+        h1 {
+            color: #DAA520;
+            margin: 0;
+            font-family: 'Arial Black', sans-serif;
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .page-title {
+            color: #fff;
+            margin: 0;
+            font-size: 22px;
+            text-align: center;
+            flex: 1;
+        }
+
+        .header-spacer {
+            flex: 1;
+        }
+
+        .container {
+            position: static;
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .game-main-info {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: start;
+        }
+
+        .game-banner {
+            width: 100%;
+            height: auto;
+            max-width: 700px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            display: block;
+        }
+
+        .buy-card {
+            background-color: #252525;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            height: fit-content;
+        }
+
+        .price {
+            font-size: 32px;
+            font-weight: bold;
+            color: #DAA520;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .buy-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #DAA520;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .buy-button:hover {
+            background-color: #F0C420;
+            box-shadow: 0 0 15px rgba(218, 165, 32, 0.4);
+        }
+
+        .section-title {
+            color: #DAA520;
+            border-left: 4px solid #DAA520;
+            padding-left: 15px;
+            margin: 40px 0 20px 0;
+            text-transform: uppercase;
+            font-size: 20px;
+        }
+
+        .description-text {
+            color: #ccc;
+            font-size: 17px;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            background: #222;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .spec-item b {
+            color: #DAA520;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: #555;
+            border-top: 1px solid #222;
+            margin-top: 50px;
+        }
+        
+        .section-header {
+            background-color: #222;
+            padding: 15px 40px;
+            margin: 20px 0;
+            border-bottom: 2px solid #DAA520;
+            border-top: 1px solid #333;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            color: #fff;
+            margin: 0;
+            font-size: 22px;
+            font-weight: normal;
+        }
+        
+        .features-list {
+            color: #ccc;
+            list-style-type: square;
+            padding-left: 20px;
+            line-height: 1.6;
+        }
+        
+        .features-list li {
+            margin-bottom: 12px;
+        }
+        
+        .features-list strong {
+            color: #FFD700;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-line">
+        <a href="Adam.html" class="logo-section">
+            <img src="images2.png" alt="Logo" style="width: 50px; height: 50px; border-radius: 5px;">
+            <h1>MarketGame's</h1>
+        </a>
+        <h2 class="page-title">Terraria</h2>
+        <div class="header-spacer"></div>
+    </header>
+
+    <div class="container">
+        <div class="game-main-info">
+            <div>
+                <img src="images14.jpg" alt="Terraria" class="game-banner">
+            </div>
+
+            <div class="buy-card">
+                <span class="price">299 ₽</span>
+                <a href="#" class="buy-button" style="padding: 12px 7px;">
+                    <p style="margin: 5px;">Купить сейчас</p>
+                </a>
+                <p style="font-size: 15px; color: #888; margin-top: 14px;">
+                    ✅ Очень быстрое оформление заказа<br>
+                    ✅ Пожизненная лицензия<br>
+                    ✅ Кооперативная игра до 8 игроков<br>
+                    ✅ Все обновления включены
+                </p>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <h2><b>Описание игры</b></h2>
+        </div>
+
+        <h3 class="section-title">Об игре</h3>
+        <div class="game-description">
+            <p><strong>Terraria</strong> — это 2D песочница с элементами action-adventure и RPG. Игра предлагает исследование, добычу ресурсов, крафт, строительство и сражения с разнообразными монстрами в процедурно генерируемом мире.</p>
+            <p>Начните с простых инструментов, но постепенно разблокируйте мощное оружие, магические предметы и сложные механизмы. Стройте дома для NPC, создавайте сложные системы и сражайтесь с эпическими боссами.</p>
+        </div>
+
+        <h3 class="section-title">Особенности издания</h3>
+        <ul class="features-list">
+            <li><strong>Глубокий крафтинг:</strong> Более 5000 предметов для создания и комбинирования.</li>
+            <li><strong>Исследование миров:</strong> Генерируемые миры с подземельями, храмами, небесными островами и адом.</li>
+            <li><strong>Боссы и события:</strong> 20+ уникальных боссов и специальных событий с уникальной добычей.</li>
+            <li><strong>Строительство:</strong> Создавайте что угодно — от маленькой хижины до огромных механизированных замков.</li>
+            <li><strong>Мультиплеер:</strong> Кооперативная игра до 8 игроков с возможностью создания серверов.</li>
+        </ul>
+
+        <h3 class="section-title">Системные требования (ПК)</h3>
+        <div class="specs-grid">
+            <div class="spec-item">
+                <p><b>ОС:</b> Windows XP, Vista, 7, 8/8.1, 10</p>
+                <p><b>Процессор:</b> 2.0 GHz</p>
+                <p><b>Оперативная память:</b> 2.5 GB RAM</p>
+            </div>
+            <div class="spec-item">
+                <p><b>Видеокарта:</b> 128 MB Video Memory, Shader Model 2.0+</p>
+                <p><b>Место на диске:</b> 200 MB</p>
+                <p><b>Дополнительно:</b> DirectX 9.0c или OpenGL 3.0+</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        &copy; 2026 MarketGame's Store. Все права защищены.
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>О нас - MarketGame's</title>
+    <style>
+        /* Основные стили как на главной странице */
+        body {
+            background-color: #1a1a1a;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .header-line {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+            padding: 10px 40px;
+            background-color: #222;
+            border-bottom: 2px solid #ff0000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        h1 { 
+            color: #ff0000; 
+            margin: 0;
+            font-family: 'Arial Black', sans-serif;
+            font-size: 28px;
+            line-height: 1;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover { color: #ff0000; }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            color: #ff0000;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            background: #222;
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid #333;
+        }
+
+        .section h2 {
+            color: #ff0000;
+            font-size: 28px;
+            margin-bottom: 25px;
+            border-left: 4px solid #ff0000;
+            padding-left: 15px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #333;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff0000;
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #ff0000;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #ff0000, #ff6666);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .statistics {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            color: #ff0000;
+            font-size: 48px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            color: #aaa;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .footer {
+            background-color: #222;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #333;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-line">
+        <a href="Adam.html" class="logo-section">
+            <img src="images2.png" alt="Logo" style="width: 45px; height: 45px;">
+            <h1>MarketGame's</h1>
+        </a>
+        
+        <nav class="nav-menu">
+            <a href="Adam.html" class="nav-link">Главная</a>
+            <a href="catalog.html" class="nav-link">Каталог</a>
+            <a href="about.html" class="nav-link">О нас</a>
+            <a href="contacts.html" class="nav-link">Контакты</a>
+            <a href="support.html" class="nav-link">Поддержка</a>
+        </nav>
+    </header>
+
+    <div class="about-container">
+        <h1 class="page-title">О компании MarketGame's</h1>
+
+        <!-- Наша миссия -->
+        <div class="section">
+            <h2>🎯 Наша миссия</h2>
+            <p>Мы создаем лучшую площадку для покупки цифровых игр, где каждый геймер может найти именно то, что ему нужно. Наша цель — сделать покупку игр простой, быстрой и безопасной.</p>
+            <p>Основанная в 2020 году, компания MarketGame's выросла из небольшого стартапа в одного из лидеров на рынке цифровых дистрибьюторов игр в России.</p>
+        </div>
+
+        <!-- Почему выбирают нас -->
+        <div class="section">
+            <h2>⭐ Почему выбирают MarketGame's</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Мгновенная доставка</h3>
+                    <p>Ключи активации приходят на почту в течение 1-5 минут после оплаты</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>100% безопасность</h3>
+                    <p>Все ключи официальные, купленные у издателей. Гарантия возврата денег</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Лучшие цены</h3>
+                    <p>Цены на 10-30% ниже, чем в официальных магазинах</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Огромный выбор</h3>
+                    <p>Более 5000 игр от инди-проектов до AAA-хитов</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Наша статистика -->
+        <div class="section">
+            <h2>📊 Наши достижения</h2>
+            <div class="statistics">
+                <div class="stat-item">
+                    <span class="stat-number">50,000+</span>
+                    <span class="stat-label">Довольных клиентов</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5,000+</span>
+                    <span class="stat-label">Игр в каталоге</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">99.8%</span>
+                    <span class="stat-label">Положительных отзывов</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Поддержка</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Наша команда -->
+        <div class="section">
+            <h2>👥 Наша команда</h2>
+            <p>Мы — команда энтузиастов, которые сами являются заядлыми геймерами. Мы понимаем, что важно для игроков, и стремимся создать идеальный сервис.</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-avatar">АИ</div>
+                    <h3>Хайдаев Адам</h3>
+                    <p>Основатель & CEO</p>
+                    <p style="color: #aaa; font-size: 14px;">Геймер со стажем 20+ лет</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-avatar">МП</div>
+                    <h3>Саралапов Умар</h3>
+                    <p>Директор по маркетингу</p>
+                    <p style="color: #aaa; font-size: 14px;">Специалист в игровой индустрии 8 лет</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-avatar">ДС</div>
+                    <h3>Булатов Магомед</h3>
+                    <p>Технический директор</p>
+                    <p style="color: #aaa; font-size: 14px;">Разработчик с 10-летним опытом</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Наши принципы -->
+        <div class="section">
+            <h2>🤝 Наши принципы</h2>
+            <ul style="color: #ccc; font-size: 18px; line-height: 1.8;">
+                <li><strong>Честность</strong> — мы всегда работаем прозрачно и не скрываем информацию от клиентов</li>
+                <li><strong>Качество</strong> — предлагаем только официальные ключи от проверенных поставщиков</li>
+                <li><strong>Поддержка</strong> — всегда готовы помочь и решить любую проблему</li>
+                <li><strong>Инновации</strong> — постоянно улучшаем сервис и внедряем новые технологии</li>
+                <li><strong>Сообщество</strong> — ценим наших клиентов и создаем для них лучшие условия</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div style="color: #777; font-size: 14px;">
+            &copy; 2026 MarketGame's Store. Все права защищены.<br>
+            ОГРН: 1234567890123 | ИНН: 1234567890
+        </div>
+    </footer>
+
+</body>
+</html>

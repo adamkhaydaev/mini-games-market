@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Контакты - MarketGame's</title>
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            background-image: 
+                linear-gradient(45deg, rgba(255, 0, 0, 0.03) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(255, 0, 0, 0.03) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(255, 0, 0, 0.03) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(255, 0, 0, 0.03) 75%);
+            background-size: 40px 40px;
+            color: #fff;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 77, 77, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(255, 51, 51, 0.06) 0%, transparent 50%);
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* Анимированные частицы */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.3), transparent);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translate(calc(100vw * var(--x)), calc(100vh * var(--y))) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Шапка */
+        .header-line {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 60px;
+            background: linear-gradient(135deg, 
+                rgba(20, 20, 20, 0.98) 0%,
+                rgba(30, 30, 30, 0.95) 100%);
+            border-bottom: 2px solid;
+            border-image: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 0, 0, 0.3),
+                rgba(255, 77, 77, 0.3),
+                rgba(255, 0, 0, 0.3),
+                transparent) 1;
+            box-shadow: 
+                0 10px 40px rgba(255, 0, 0, 0.15),
+                0 1px 0 rgba(255, 255, 255, 0.05) inset;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .logo-section::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ff0000, #ff4444);
+            transition: width 0.4s ease;
+        }
+
+        .logo-section:hover {
+            transform: translateY(-3px);
+        }
+
+        .logo-section:hover::after {
+            width: 100%;
+        }
+
+        .logo-section img {
+            width: 55px;
+            height: 55px;
+            border-radius: 15px;
+            border: 2px solid transparent;
+            background: linear-gradient(45deg, #222, #333) padding-box,
+                        linear-gradient(45deg, #ff0000, #ff6666) border-box;
+            padding: 4px;
+            box-shadow: 
+                0 0 25px rgba(255, 0, 0, 0.4),
+                0 0 50px rgba(255, 0, 0, 0.1) inset;
+            filter: drop-shadow(0 5px 15px rgba(255, 0, 0, 0.3));
+            animation: logoGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes logoGlow {
+            0% {
+                box-shadow: 
+                    0 0 20px rgba(255, 0, 0, 0.4),
+                    0 0 50px rgba(255, 0, 0, 0.1) inset;
+            }
+            100% {
+                box-shadow: 
+                    0 0 30px rgba(255, 0, 0, 0.6),
+                    0 0 60px rgba(255, 77, 77, 0.2) inset;
+            }
+        }
+
+        h1 {
+            color: #fff;
+            margin: 0;
+            font-family: 'Orbitron', 'Arial Black', sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            background: linear-gradient(135deg, 
+                #ff0000 0%, 
+                #ff4444 25%, 
+                #ff6666 50%, 
+                #ff4444 75%, 
+                #ff0000 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 
+                0 0 30px rgba(255, 0, 0, 0.5),
+                0 0 60px rgba(255, 0, 0, 0.2);
+            animation: textShine 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes textShine {
+            from {
+                background-position: 0% 50%;
+                text-shadow: 
+                    0 0 30px rgba(255, 0, 0, 0.5),
+                    0 0 60px rgba(255, 0, 0, 0.2);
+            }
+            to {
+                background-position: 100% 50%;
+                text-shadow: 
+                    0 0 40px rgba(255, 77, 77, 0.6),
+                    0 0 80px rgba(255, 77, 77, 0.3);
+            }
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .nav-link {
+            color: #ddd;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 500;
+            padding: 12px 25px;
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 0, 0, 0.1), 
+                transparent);
+            transition: left 0.7s ease;
+        }
+
+        .nav-link:hover {
+            color: #fff;
+            background: rgba(255, 0, 0, 0.1);
+            border-color: rgba(255, 0, 0, 0.3);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 
+                0 10px 25px rgba(255, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+        }
+
+        .nav-link:hover::before {
+            left: 100%;
+        }
+
+        .nav-link.active {
+            color: #fff;
+            background: linear-gradient(135deg, 
+                rgba(255, 0, 0, 0.15), 
+                rgba(255, 77, 77, 0.1));
+            border-color: rgba(255, 0, 0, 0.4);
+            box-shadow: 
+                0 8px 32px rgba(255, 0, 0, 0.25),
+                0 0 15px rgba(255, 77, 77, 0.2) inset;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                #ff0000, 
+                #ff6666, 
+                #ff0000, 
+                transparent);
+            border-radius: 3px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        /* Основной контент */
+        .contacts-container {
+            max-width: 1400px;
+            margin: 80px auto;
+            padding: 0 40px;
+            animation: containerAppear 1s ease-out;
+        }
+
+        @keyframes containerAppear {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .page-title {
+            color: #fff;
+            font-size: 64px;
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+            padding-bottom: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+        }
+
+        .page-title::before {
+            content: '📞';
+            font-size: 80px;
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.1;
+            animation: iconFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
+            50% { transform: translateX(-50%) translateY(-20px) rotate(5deg); }
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 5px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                #ff0000, 
+                #ff6666, 
+                #ff0000, 
+                transparent);
+            border-radius: 5px;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+        }
+
+        /* Карточки контактов */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 45px;
+            margin-bottom: 90px;
+        }
+
+        .contact-card {
+            background: linear-gradient(145deg, 
+                rgba(30, 30, 30, 0.8) 0%,
+                rgba(20, 20, 20, 0.9) 100%);
+            padding: 45px 35px;
+            border-radius: 25px;
+            border: 1px solid;
+            border-image: linear-gradient(135deg, 
+                rgba(255, 0, 0, 0.2), 
+                rgba(255, 77, 77, 0.1),
+                rgba(255, 0, 0, 0.2)) 1;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                #ff0000, 
+                #ff4444, 
+                #ff6666, 
+                #ff4444, 
+                #ff0000);
+            border-radius: 27px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            filter: blur(20px);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            border-image: linear-gradient(135deg, 
+                #ff0000, 
+                #ff4444, 
+                #ff6666, 
+                #ff4444, 
+                #ff0000) 1;
+            box-shadow: 
+                0 25px 60px rgba(255, 0, 0, 0.25),
+                0 0 30px rgba(255, 77, 77, 0.15) inset;
+        }
+
+        .contact-card:hover::before {
+            opacity: 0.3;
+        }
+
+        .contact-icon {
+            font-size: 70px;
+            margin-bottom: 35px;
+            display: inline-block;
+            filter: drop-shadow(0 10px 20px rgba(255, 0, 0, 0.4));
+            animation: iconPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg); 
+                filter: drop-shadow(0 10px 20px rgba(255, 0, 0, 0.4));
+            }
+            50% { 
+                transform: scale(1.1) rotate(5deg); 
+                filter: drop-shadow(0 15px 30px rgba(255, 77, 77, 0.6));
+            }
+        }
+
+        .contact-info h3 {
+            color: #fff;
+            font-size: 28px;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                #ff0000, 
+                #ff6666, 
+                #ff0000, 
+                transparent);
+            border-radius: 3px;
+            animation: lineGrow 2s ease-in-out infinite;
+        }
+
+        @keyframes lineGrow {
+            0%, 100% { width: 80px; }
+            50% { width: 120px; }
+        }
+
+        .contact-link {
+            color: #ff9999;
+            text-decoration: none;
+            font-size: 20px;
+            display: block;
+            margin: 18px 0;
+            padding: 15px 25px;
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 0, 0, 0.15), 
+                transparent);
+            transition: left 0.6s ease;
+        }
+
+        .contact-link:hover {
+            color: #fff;
+            background: rgba(255, 0, 0, 0.12);
+            border-color: rgba(255, 0, 0, 0.3);
+            transform: translateX(10px);
+            box-shadow: 
+                0 10px 25px rgba(255, 0, 0, 0.2),
+                0 0 15px rgba(255, 77, 77, 0.1) inset;
+        }
+
+        .contact-link:hover::before {
+            left: 100%;
+        }
+
+        .contact-link span {
+            display: block;
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 8px;
+            opacity: 0.8;
+        }
+
+        /* График работы */
+        .schedule {
+            background: linear-gradient(145deg, 
+                rgba(30, 30, 30, 0.85) 0%,
+                rgba(20, 20, 20, 0.9) 100%);
+            padding: 55px;
+            border-radius: 25px;
+            margin-bottom: 80px;
+            border: 1px solid;
+            border-image: linear-gradient(135deg, 
+                rgba(255, 0, 0, 0.2), 
+                rgba(255, 77, 77, 0.1),
+                rgba(255, 0, 0, 0.2)) 1;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+        }
+
+        .schedule::before {
+            content: '🕐';
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 60px;
+            opacity: 0.08;
+            animation: clockRotate 10s linear infinite;
+        }
+
+        @keyframes clockRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .schedule h2 {
+            color: #fff;
+            font-size: 36px;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            padding-left: 20px;
+            font-weight: 700;
+        }
+
+        .schedule h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 80%;
+            background: linear-gradient(180deg, #ff0000, #ff6666);
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+
+        .schedule-table {
+            width: 100%;
+            margin-top: 35px;
+            border-collapse: separate;
+            border-spacing: 0 15px;
+        }
+
+        .schedule-table tr {
+            transition: all 0.4s ease;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .schedule-table tr:hover {
+            background: rgba(255, 0, 0, 0.08);
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.2);
+        }
+
+        .schedule-table td {
+            padding: 25px 35px;
+            color: #ddd;
+            font-size: 18px;
+            border: none;
+            position: relative;
+        }
+
+        .schedule-table td:first-child {
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .time-cell {
+            color: #ff6666;
+            font-weight: 700;
+            font-size: 20px;
+            text-shadow: 0 0 15px rgba(255, 102, 102, 0.5);
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .time-cell::before {
+            content: '⏰';
+            position: absolute;
+            left: 0;
+            opacity: 0.6;
+        }
+
+        /* FAQ секция */
+        .faq-section {
+            background: linear-gradient(145deg, 
+                rgba(30, 30, 30, 0.85) 0%,
+                rgba(20, 20, 20, 0.9) 100%);
+            padding: 55px;
+            border-radius: 25px;
+            border: 1px solid;
+            border-image: linear-gradient(135deg, 
+                rgba(255, 0, 0, 0.2), 
+                rgba(255, 77, 77, 0.1),
+                rgba(255, 0, 0, 0.2)) 1;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+        }
+
+        .faq-section h2 {
+            color: #fff;
+            font-size: 36px;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+            padding-left: 20px;
+            font-weight: 700;
+        }
+
+        .faq-section h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 80%;
+            background: linear-gradient(180deg, #ff0000, #ff6666);
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+
+        .faq-item {
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            padding-bottom: 30px;
+            transition: all 0.4s ease;
+            border-radius: 15px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .faq-item:hover {
+            background: rgba(255, 0, 0, 0.05);
+            border-color: rgba(255, 0, 0, 0.2);
+            transform: translateX(10px);
+        }
+
+        .faq-question {
+            color: #ff9999;
+            font-size: 22px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.4s ease;
+            font-weight: 600;
+        }
+
+        .faq-question:hover {
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 153, 153, 0.5);
+        }
+
+        .faq-question::before {
+            content: '▶';
+            font-size: 16px;
+            transition: all 0.4s ease;
+            color: #ff6666;
+        }
+
+        .faq-item.active .faq-question::before {
+            transform: rotate(90deg);
+            color: #ff0000;
+        }
+
+        .faq-answer {
+            color: #bbb;
+            line-height: 1.8;
+            font-size: 17px;
+            padding-left: 40px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            opacity: 0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+            padding-top: 20px;
+            opacity: 1;
+        }
+
+        /* Футер */
+        .footer {
+            background: linear-gradient(to top, 
+                rgba(15, 15, 15, 0.98), 
+                rgba(25, 25, 25, 0.95));
+            padding: 70px 40px;
+            text-align: center;
+            border-top: 2px solid;
+            border-image: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 0, 0, 0.3),
+                rgba(255, 77, 77, 0.3),
+                rgba(255, 0, 0, 0.3),
+                transparent) 1;
+            margin-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                #ff0000, 
+                #ff6666, 
+                #ff0000, 
+                transparent);
+        }
+
+        .footer div {
+            color: #888;
+            font-size: 16px;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer small {
+            color: #666;
+            margin-top: 15px;
+            display: block;
+            font-size: 14px;
+        }
+
+        /* Кастомный скроллбар */
+        ::-webkit-scrollbar {
+            width: 14px;
+            background: #111;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: linear-gradient(180deg, 
+                rgba(20, 20, 20, 0.8), 
+                rgba(30, 30, 30, 0.8));
+            border-radius: 7px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, 
+                #ff0000, 
+                #ff4444, 
+                #ff6666, 
+                #ff4444, 
+                #ff0000);
+            border-radius: 7px;
+            border: 2px solid #111;
+            box-shadow: 
+                0 0 20px rgba(255, 0, 0, 0.5),
+                inset 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, 
+                #ff3333, 
+                #ff6666, 
+                #ff8888, 
+                #ff6666, 
+                #ff3333);
+            box-shadow: 
+                0 0 30px rgba(255, 77, 77, 0.6),
+                inset 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1200px) {
+            .header-line {
+                padding: 20px 40px;
+            }
+            
+            .contact-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 35px;
+            }
+            
+            .page-title {
+                font-size: 54px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-line {
+                flex-direction: column;
+                gap: 25px;
+                padding: 25px;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .nav-link {
+                padding: 10px 20px;
+                font-size: 15px;
+            }
+            
+            .page-title {
+                font-size: 42px;
+                margin-bottom: 60px;
+            }
+            
+            .contact-card, .schedule, .faq-section {
+                padding: 35px 25px;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contacts-container {
+                padding: 0 25px;
+                margin: 60px auto;
+            }
+            
+            h1 {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-line {
+                padding: 20px;
+            }
+            
+            .nav-link {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .contact-icon {
+                font-size: 50px;
+            }
+            
+            .contact-info h3 {
+                font-size: 24px;
+            }
+            
+            .contact-link {
+                font-size: 16px;
+                padding: 12px 20px;
+            }
+        }
+
+        /* Эффект печати для текста */
+        .typewriter {
+            display: inline-block;
+            overflow: hidden;
+            border-right: 3px solid #ff0000;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #ff0000 }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Анимированные частицы -->
+    <div class="particles" id="particles"></div>
+
+    <header class="header-line">
+        <a href="Adam.html" class="logo-section">
+            <img src="images2.png" alt="MarketGame's Logo">
+            <h1>MarketGame's</h1>
+        </a>
+        
+        <nav class="nav-menu">
+            <a href="Adam.html" class="nav-link">Главная</a>
+            <a href="catalog.html" class="nav-link">Каталог</a>
+            <a href="about.html" class="nav-link">О нас</a>
+            <a href="contacts.html" class="nav-link active">Контакты</a>
+            <a href="support.html" class="nav-link">Поддержка</a>
+        </nav>
+    </header>
+
+    <div class="contacts-container">
+        <h1 class="page-title"><span class="typewriter">Контакты MarketGame's</span></h1>
+
+        <!-- Контактная информация -->
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📧</div>
+                <div class="contact-info">
+                    <h3>Электронная почта</h3>
+                    <a href="mailto:adamfadim46@marketgames.com" class="contact-link">
+                        support@marketgames.com
+                        <span>Техническая поддержка</span>
+                    </a>
+                    <a href="mailto:bulatovmagomed@marketgames.com" class="contact-link">
+                        sales@marketgames.com
+                        <span>Отдел продаж</span>
+                    </a>
+                    <a href="mailto:saralapovumar@marketgames.com" class="contact-link">
+                        partners@marketgames.com
+                        <span>Партнёрская программа</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <div class="contact-info">
+                    <h3>Телефоны</h3>
+                    <a href="tel:+78001234567" class="contact-link">
+                        8 (800) 123-45-67
+                        <span>Бесплатно по России</span>
+                    </a>
+                    <a href="tel:+74951234567" class="contact-link">
+                        +7 (495) 123-45-67
+                        <span>Москва</span>
+                    </a>
+                    <a href="tel:+78122456789" class="contact-link">
+                        +7 (812) 245-67-89
+                        <span>Санкт-Петербург</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">💬</div>
+                <div class="contact-info">
+                    <h3>Социальные сети</h3>
+                    <a href="https://t.me/marketgames" class="contact-link" target="_blank">
+                        Telegram: @marketgames
+                        <span>Быстрые ответы</span>
+                    </a>
+                    <a href="https://vk.com/marketgames" class="contact-link" target="_blank">
+                        ВКонтакте: marketgames
+                        <span>Новости и акции</span>
+                    </a>
+                    <a href="https://discord.gg/marketgames" class="contact-link" target="_blank">
+                        Discord: marketgames
+                        <span>Игровое сообщество</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- График работы -->
+        <div class="schedule">
+            <h2>🕐 График работы</h2>
+            <table class="schedule-table">
+                <tr>
+                    <td>Понедельник - Пятница</td>
+                    <td class="time-cell">09:00 - 21:00</td>
+                </tr>
+                <tr>
+                    <td>Суббота</td>
+                    <td class="time-cell">10:00 - 20:00</td>
+                </tr>
+                <tr>
+                    <td>Воскресенье</td>
+                    <td class="time-cell">10:00 - 18:00</td>
+                </tr>
+                <tr>
+                    <td style="color: #ff6666; font-weight: bold; padding-left: 30px;">
+                        <span style="color: #ff0000;">⚡</span> Техническая поддержка
+                    </td>
+                    <td class="time-cell" style="color: #00ff00; text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);">
+                        24/7
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Часто задаваемые вопросы -->
+        <div class="faq-section">
+            <h2>❓ Часто задаваемые вопросы</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">⏱️ Сколько времени занимает доставка ключа?</div>
+                <div class="faq-answer">
+                    В 95% случаев ключ приходит в течение 1-5 минут после оплаты. 
+                    В редких случаях при больших заказах или технических работах доставка может занять до 24 часов.
+                    Вы получите уведомление на указанную почту сразу после обработки заказа.
+                    <br><br>
+                    <small style="color: #ff6666;">💡 Совет: Проверьте папку "Спам", если не видите письмо</small>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">🔄 Можно ли вернуть игру?</div>
+                <div class="faq-answer">
+                    Да, мы принимаем возвраты в течение 14 дней с момента покупки, если ключ не был активирован. 
+                    Для этого напишите на <a href="mailto:support@marketgames.com" style="color: #ff6666;">support@marketgames.com</a> с номером заказа. 
+                    Возврат средств осуществляется в течение 3-5 рабочих дней.
+                    <br><br>
+                    <small style="color: #ff6666;">⚠️ Важно: Активированные ключи возврату не подлежат</small>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">🌍 В каких странах работают ваши ключи?</div>
+                <div class="faq-answer">
+                    Большинство ключей имеют регион "Global" и работают по всему миру. 
+                    Некоторые игры могут иметь региональные ограничения — это указано на странице товара. 
+                    При покупке обратите внимание на значок региона рядом с ценой.
+                    <br><br>
+                    <small style="color: #ff6666;">🌐 Поддерживаемые регионы: Global, EU, US, RU, CIS</small>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">💳 Какие способы оплаты вы принимаете?</div>
+                <div class="faq-answer">
+                    Мы принимаем все популярные способы оплаты:
+                    <div style="margin-top: 15px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+                        <div style="background: rgba(255, 0, 0, 0.1); padding: 10px; border-radius: 8px;">
+                            💳 Банковские карты<br>
+                            <small>Visa, MasterCard, Мир</small>
+                        </div>
+                        <div style="background: rgba(255, 0, 0, 0.1); padding: 10px; border-radius: 8px;">
+                            📱 Электронные кошельки<br>
+                            <small>QIWI, ЮMoney, WebMoney</small>
+                        </div>
+                        <div style="background: rgba(255, 0, 0, 0.1); padding: 10px; border-radius: 8px;">
+                            ₿ Криптовалюта<br>
+                            <small>Bitcoin, Ethereum, USDT</small>
+                        </div>
+                        <div style="background: rgba(255, 0, 0, 0.1); padding: 10px; border-radius: 8px;">
+                            🎁 Подарочные карты<br>
+                            <small>Steam, PlayStation, Xbox</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div>
+            MarketGame's — ваш надёжный партнёр в мире игр
+            <br>
+            © 2010-2026 MarketGame's LLC. Все права защищены.
+            <br>
+            <small>
+                ИНН: 1234567890 | ОГРН: 1234567890123 | Лицензия на деятельность: №123456
+            </small>
+        </div>
+    </footer>
+
+    <script>
+        // Создание анимированных частиц
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Случайные параметры
+                const size = Math.random() * 100 + 50;
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                const delay = Math.random() * 20;
+                const duration = Math.random() * 30 + 20;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${x}%`;
+                particle.style.top = `${y}%`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.setProperty('--x', Math.random() * 2 - 1);
+                particle.style.setProperty('--y', Math.random() * 2 - 1);
+                particle.style.opacity = Math.random() * 0.2 + 0.05;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Анимация FAQ
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const item = this.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Закрываем все
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                });
+                
+                // Открываем текущий, если был закрыт
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Параллакс для карточек
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.contact-card');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            cards.forEach((card, index) => {
+                const speed = 0.05 + (index * 0.01);
+                const x = (mouseX - 0.5) * 20 * speed;
+                const y = (mouseY - 0.5) * 20 * speed;
+                
+                card.style.transform = `translateY(-15px) scale(1.03) rotateX(${y}deg) rotateY(${x}deg)`;
+            });
+        });
+
+        // Анимация появления элементов при скролле
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'containerAppear 1s ease-out forwards';
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        // Наблюдаем за всеми основными блоками
+        document.querySelectorAll('.contact-card, .schedule, .faq-section').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(50px) scale(0.95)';
+            observer.observe(el);
+        });
+
+        // Эффект печати для заголовка
+        const title = document.querySelector('.typewriter');
+        title.style.width = '0';
+        setTimeout(() => {
+            title.style.animation = 'typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite';
+            title.style.width = '100%';
+        }, 500);
+
+        // Интерактивные эффекты для ссылок
+        document.querySelectorAll('.contact-link').forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                link.style.transform = 'translateX(15px) scale(1.05)';
+            });
+            
+            link.addEventListener('mouseleave', () => {
+                link.style.transform = 'translateX(10px) scale(1)';
+            });
+        });
+
+        // Инициализация частиц после загрузки
+        window.addEventListener('load', createParticles);
+
+        // Динамическое изменение тени шапки при скролле
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const header = document.querySelector('.header-line');
+            
+            if (currentScroll > lastScroll) {
+                // Скроллим вниз
+                header.style.boxShadow = '0 15px 50px rgba(255, 0, 0, 0.25)';
+            } else {
+                // Скроллим вверх
+                header.style.boxShadow = '0 10px 40px rgba(255, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.05) inset';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Анимация при наведении на навигацию
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('mouseenter', (e) => {
+                const letters = e.target.textContent.split('');
+                e.target.textContent = '';
+                
+                letters.forEach((letter, i) => {
+                    const span = document.createElement('span');
+                    span.textContent = letter;
+                    span.style.animation = `jump 0.5s ease ${i * 0.1}s`;
+                    e.target.appendChild(span);
+                });
+                
+                // Возвращаем текст через 1 секунду
+                setTimeout(() => {
+                    e.target.textContent = letters.join('');
+                }, 1000);
+            });
+        });
+
+        // Создаём CSS для анимации прыжка букв
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes jump {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-10px); color: #ff0000; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">  
+    <title>MarketGame's - Red Dead Redemption 2</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .header-line {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+            padding: 10px 40px;
+            background-color: #222;
+            border-bottom: 2px solid #228B22;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            flex: 1; 
+        }
+
+        h1 {
+            color: #228B22;
+            margin: 0;
+            font-family: 'Arial Black', sans-serif;
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .page-title {
+            color: #fff;
+            margin: 0;
+            font-size: 22px;
+            text-align: center;
+            flex: 1;
+        }
+
+        .header-spacer {
+            flex: 1;
+        }
+
+        .container {
+            position: static;
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .game-main-info {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: start;
+        }
+
+        .game-banner {
+            width: 100%;
+            height: auto;
+            max-width: 700px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            display: block;
+        }
+
+        .buy-card {
+            background-color: #252525;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            height: fit-content;
+        }
+
+        .price {
+            font-size: 32px;
+            font-weight: bold;
+            color: #8B0000;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .buy-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #8B0000;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .buy-button:hover {
+            background-color: #A52A2A;
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.4);
+        }
+
+        .section-title {
+            color: #8B0000;
+            border-left: 4px solid #8B0000;
+            padding-left: 15px;
+            margin: 40px 0 20px 0;
+            text-transform: uppercase;
+            font-size: 20px;
+        }
+
+        .description-text {
+            color: #ccc;
+            font-size: 17px;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            background: #222;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .spec-item b {
+            color: #8B0000;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: #555;
+            border-top: 1px solid #222;
+            margin-top: 50px;
+        }
+        
+        .section-header {
+            background-color: #222;
+            padding: 15px 40px;
+            margin: 20px 0;
+            border-bottom: 2px solid #8B0000;
+            border-top: 1px solid #333;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            color: #fff;
+            margin: 0;
+            font-size: 22px;
+            font-weight: normal;
+        }
+        
+        .features-list {
+            color: #ccc;
+            list-style-type: square;
+            padding-left: 20px;
+            line-height: 1.6;
+        }
+        
+        .features-list li {
+            margin-bottom: 12px;
+        }
+        
+        .features-list strong {
+            color: #D2691E;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-line">
+        <a href="Adam.html" class="logo-section">
+            <img src="images2.png" alt="Logo" style="width: 50px; height: 50px; border-radius: 5px;">
+            <h1>MarketGame's</h1>
+        </a>
+        <h2 class="page-title">Grand Theft Auto: San Andreas</h2>
+        <div class="header-spacer"></div>
+    </header>
+
+    <div class="container">
+        <div class="game-main-info">
+            <div>
+                <img src="gta_sa_poster.jpg" alt="GTA SA" class="game-banner">
+            </div>
+
+            <div class="buy-card">
+                <span class="price">2.999 ₽</span>
+                <a href="#" class="buy-button" style="padding: 12px 7px;">
+                    <p style="margin: 5px;">Купить сейчас</p>
+                </a>
+                <p style="font-size: 15px; color: #888; margin-top: 14px;">
+                    ✅ Очень быстрое оформление заказа<br>
+                    ✅ Автоматическая доставка на почту<br>
+                    ✅ Регион по умолчанию: Global
+                </p>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <h2><b>Описание игры</b></h2>
+        </div>
+
+        <h3 class="section-title">Об игре</h3>
+        <div class="game-description">
+            <p><strong>Grand Theft Auto: San Andreas</strong> — это культовая экшн-игра 2004 года от Rockstar North, повествующая о возвращении Карла «Си-Джея» Джонсона в свой родной город Лос-Сантос в середине 90-х, чтобы разобраться в смерти матери и вернуть контроль над улицами в условиях масштабного, разнообразного открытого мира.</p>
+            <p>Игра выделяется эпичным сюжетом, атмосферой гангста-раповой культуры 90-х и невероятной свободой действий, позволяющей влиять на внешность персонажа и исследовать три огромных города с прилегающими территориями.</p>
+        </div>
+
+        <h3 class="section-title">Особенности издания</h3>
+        <ul class="features-list">
+            <li><strong>Полный контент:</strong> Включает оригинальную игру со всем сюжетом, побочными миссиями и активностями в штате Сан-Андреас.</li>
+            <li><strong>Модернизация:</strong> Улучшенная графика с поддержкой высоких разрешений, повышенная стабильность и ускоренные загрузки на современных платформах.</li>
+            <li><strong>Игровой контент:</strong> Огромный открытый мир, насыщенный сюжет о предательстве и мести, десятки видов транспорта, нелинейный геймплей.</li>
+            <li><strong>Платформы:</strong> Доступна на ПК, Xbox 360/One/Series X|S, PlayStation 2/3/4, а также на iOS и Android.</li>
+        </ul>
+
+        <h3 class="section-title">Системные требования (ПК)</h3>
+        <div class="specs-grid">
+            <div class="spec-item">
+                <p><b>ОС:</b> Windows 10 (64-bit)</p>
+                <p><b>Процессор:</b> Intel Core i5-6600K / AMD FX-6300</p>
+                <p><b>Оперативная память:</b> 8 GB RAM</p>
+            </div>
+            <div class="spec-item">
+                <p><b>Видеокарта:</b> NVIDIA GeForce GTX 760 2GB / AMD Radeon R9 280 3GB</p>
+                <p><b>Место на диске:</b> 20 GB</p>
+                <p><b>Дополнительно:</b> Требуется подключение к интернету для активации</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        &copy; 2026 MarketGame's Store. Все права защищены.
+    </footer>
+
+</body>
+</html>

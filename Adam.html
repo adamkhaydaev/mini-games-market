@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>MarketGame's - Главная</title>
+    <style>  
+        body {
+            background-color: #1a1a1a;
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            color: #fff;
+        }
+
+        .header-line {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+            padding: 10px 40px;
+            background-color: #222;
+            border-bottom: 2px solid #ff0000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        h1 { 
+            color: #ff0000; 
+            margin: 0;
+            font-family: 'Arial Black', sans-serif;
+            font-size: 28px;
+            line-height: 1;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover { color: #ff0000; }
+
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="search"] {
+            font-size: 14px;
+            padding: 8px 12px;
+            width: 250px;
+            border-radius: 8px 0 0 8px;
+            border: 1px solid #444;
+            background: #333;
+            color: white;
+            outline: none;
+        }
+
+        .search-btn {
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+            font-weight: bold;
+            height: 38px;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 250px;
+            background: #333;
+            border: 1px solid #444;
+            border-radius: 0 0 8px 8px;
+            display: none;
+            z-index: 10;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .search-result-item {
+            display: block;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            border-bottom: 1px solid #444;
+            transition: 0.3s;
+        }
+
+        .search-result-item:hover {
+            background-color: #444;
+            color: #ff0000;
+        }
+
+        .no-results {
+            padding: 10px;
+            color: #aaa;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .login-btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            background-color: #007bff;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: #0056b3;
+        }
+
+        img { display: block; object-fit: contain; }
+
+        /* Стили для главного контента */
+        .main-content {
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            color: #ff0000;
+            font-size: 28px;
+            margin-bottom: 30px;
+            border-left: 4px solid #ff0000;
+            padding-left: 15px;
+        }
+
+        /* Стили для каталога игр */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .game-card {
+            background-color: #252525;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #333;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.1);
+            border-color: #ff0000;
+        }
+
+        .game-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 2px solid #333;
+        }
+
+        .game-info {
+            padding: 20px;
+        }
+
+        .game-title {
+            color: #fff;
+            font-size: 18px;
+            margin: 0 0 10px 0;
+            font-weight: bold;
+        }
+
+        .game-description {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .game-price {
+            color: #ff0000;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .game-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-buy, .btn-details {
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            flex: 1;
+            font-size: 13px;
+        }
+
+        .btn-buy {
+            background-color: #ff0000;
+            color: white;
+        }
+
+        .btn-buy:hover {
+            background-color: #cc0000;
+        }
+
+        .btn-details {
+            background-color: #333;
+            color: white;
+            border: 1px solid #555;
+        }
+
+        .btn-details:hover {
+            background-color: #444;
+        }
+
+        /* Стили для навигации по жанрам */
+        .genre-navigation {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        .genre-link {
+            padding: 10px 25px;
+            background-color: #333;
+            color: white;
+            border: 1px solid #555;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .genre-link:hover {
+            background-color: #ff0000;
+            border-color: #ff0000;
+        }
+
+        .genre-link-all {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .genre-link-all:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        /* Стили для баннера */
+        .hero-banner {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hero-title {
+            color: #fff;
+            font-size: 42px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-subtitle {
+            color: #ddd;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #ff0000;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .hero-btn:hover {
+            background-color: #cc0000;
+            transform: scale(1.05);
+        }
+
+        /* Стили для футера */
+        .footer {
+            background-color: #222;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #333;
+            margin-top: 60px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .footer-link {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-link:hover {
+            color: #ff0000;
+        }
+
+        .copyright {
+            color: #777;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        .user-profile-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            border: 1px solid #444;
+        }
+
+        .user-profile-btn:hover {
+            background-color: #444;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
+        }
+
+        .logout-btn {
+            display: none; /* Можно добавить выпадающее меню позже */
+            padding: 8px 15px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-line">
+        <a href="Adam.html" class="logo-section">
+            <img src="images2.png" alt="Logo" style="width: 45px; height: 45px;">
+            <h1>MarketGame's</h1>
+        </a>
+        
+        <nav class="nav-menu">
+            <a href="#action" class="nav-link">Экшен</a>
+            <a href="#rpg" class="nav-link">RPG</a>
+            <a href="#horror" class="nav-link">Хоррор</a>
+            <a href="#sandbox" class="nav-link">Песочницы</a>
+            <a href="#indie" class="nav-link">Инди</a>
+            <a href="search.html" class="nav-link" style="color: #007bff; font-weight: bold;">Все игры</a>
+            
+            <div class="search-container">
+                <input type="search" id="gameSearch" placeholder="Начните вводить название игры..." autocomplete="off">
+                <div class="search-results" id="searchResults"></div>
+                <button type="button" class="search-btn" onclick="performSearch()">Найти</button>
+            </div>
+        </nav>
+
+        <div class="auth-container">
+            <a href="login.html" class="login-btn">Войти</a>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <!-- Герой-баннер -->
+        <div class="hero-banner">
+            <div class="hero-text">
+                <h2 class="hero-title">Лучшие игры по лучшим ценам</h2>
+                <p class="hero-subtitle">Более 1000 игр в каталоге. Мгновенная доставка. Гарантия качества.</p>
+                <a href="search.html" class="hero-btn">Смотреть все игры</a>
+            </div>
+        </div>
+
+        <!-- Навигация по жанрам -->
+        <div class="genre-navigation">
+            <a href="#action" class="genre-link">Экшен</a>
+            <a href="#rpg" class="genre-link">RPG</a>
+            <a href="#horror" class="genre-link">Хоррор</a>
+            <a href="#sandbox" class="genre-link">Песочницы</a>
+            <a href="#indie" class="genre-link">Инди-игры</a>
+            <a href="#openworld" class="genre-link">Открытый мир</a>
+            <a href="#adventure" class="genre-link">Приключения</a>
+            <a href="#multiplayer" class="genre-link">Мультиплеер</a>
+            <a href="search.html" class="genre-link genre-link-all">Все игры</a>
+        </div>
+
+        <!-- Экшен (4 уникальные игры) -->
+        <h2 id="action" class="section-title">Экшен</h2>
+        <div class="games-grid">
+            <!-- GTA San Andreas -->
+            <div class="game-card" data-game="GTA San Andreas">
+                <img src="images3.jpg" alt="GTA San Andreas" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Grand Theft Auto: San Andreas</h3>
+                    <p class="game-description">Культовая игра про жизнь гангстера в 90-х годах в Сан-Андреасе.</p>
+                    <div class="game-price">1.599 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Counter-Strike 2 -->
+            <div class="game-card" data-game="Counter-Strike 2">
+                <img src="images17.jpg" alt="Counter-Strike 2" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Counter-Strike 2</h3>
+                    <p class="game-description">Классический тактический экшен-шутер от Valve.</p>
+                    <div class="game-price">Бесплатно</div>
+                    <div class="game-buttons">
+                        <a href="description15.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Скачать</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Elden Ring -->
+            <div class="game-card" data-game="Elden Ring">
+                <img src="images10.jpg" alt="Elden Ring" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Elden Ring</h3>
+                    <p class="game-description">Эпическая dark-fantasy RPG от создателей Dark Souls с экшен-боёвкой.</p>
+                    <div class="game-price">3.199 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description8.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dead by Daylight -->
+            <div class="game-card" data-game="Dead by Daylight">
+                <img src="images13.jpg" alt="Dead by Daylight" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Dead by Daylight</h3>
+                    <p class="game-description">Асимметричный хоррор 4 на 1 с динамичными погонями.</p>
+                    <div class="game-price">699 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description11.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RPG (4 уникальные игры) -->
+        <h2 id="rpg" class="section-title">Ролевые игры (RPG)</h2>
+        <div class="games-grid">
+            <!-- The Witcher 3 -->
+            <div class="game-card" data-game="The Witcher 3">
+                <img src="images6.jpg" alt="The Witcher 3" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">The Witcher 3: Wild Hunt</h3>
+                    <p class="game-description">Эпическая RPG о ведьмаке Геральте в поисках Цири.</p>
+                    <div class="game-price">1.999 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description4.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cyberpunk 2077 -->
+            <div class="game-card" data-game="Cyberpunk 2077">
+                <img src="images7.jpg" alt="Cyberpunk 2077" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Cyberpunk 2077</h3>
+                    <p class="game-description">Футуристическая RPG в мире киберпанка от создателей Ведьмака.</p>
+                    <div class="game-price">2.499 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description5.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Starfield -->
+            <div class="game-card" data-game="Starfield">
+                <img src="images9.jpg" alt="Starfield" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Starfield</h3>
+                    <p class="game-description">Новая космическая RPG от создателей Skyrim и Fallout.</p>
+                    <div class="game-price">3.499 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description7.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Предзаказ</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Terraria -->
+            <div class="game-card" data-game="Terraria">
+                <img src="images14.jpg" alt="Terraria" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Terraria</h3>
+                    <p class="game-description">2D песочница с элементами RPG и прокачкой персонажа.</p>
+                    <div class="game-price">299 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description12.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Хоррор (4 уникальные игры) -->
+        <h2 id="horror" class="section-title">Хоррор</h2>
+        <div class="games-grid">
+            <!-- Phasmophobia -->
+            <div class="game-card" data-game="Phasmophobia">
+                <img src="images12.jpg" alt="Phasmophobia" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Phasmophobia</h3>
+                    <p class="game-description">Кооперативный хоррор про охоту на призраков с друзьями.</p>
+                    <div class="game-price">399 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description10.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dead by Daylight -->
+            <div class="game-card" data-game="Dead by Daylight">
+                <img src="images13.jpg" alt="Dead by Daylight" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Dead by Daylight</h3>
+                    <p class="game-description">Асимметричный хоррор 4 на 1 от Behaviour Interactive.</p>
+                    <div class="game-price">699 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description11.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Granny -->
+            <div class="game-card" data-game="Granny">
+                <img src="images5.jpg" alt="Granny" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Granny</h3>
+                    <p class="game-description">Хоррор-игра на выживание в доме с опасной бабушкой.</p>
+                    <div class="game-price">249 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description3.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Among Us -->
+            <div class="game-card" data-game="Among Us">
+                <img src="images16.jpg" alt="Among Us" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Among Us</h3>
+                    <p class="game-description">Хоррор-саспенс с элементами социальной дедукции.</p>
+                    <div class="game-price">199 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description14.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Песочницы (4 уникальные игры) -->
+        <h2 id="sandbox" class="section-title">Песочницы</h2>
+        <div class="games-grid">
+            <!-- Minecraft -->
+            <div class="game-card" data-game="Minecraft">
+                <img src="images8.jpg" alt="Minecraft" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Minecraft</h3>
+                    <p class="game-description">Легендарная песочница с бесконечными возможностями для творчества.</p>
+                    <div class="game-price">899 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description6.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Terraria -->
+            <div class="game-card" data-game="Terraria">
+                <img src="images14.jpg" alt="Terraria" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Terraria</h3>
+                    <p class="game-description">2D песочница с элементами RPG и строительством.</p>
+                    <div class="game-price">299 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description12.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Garry's Mod -->
+            <div class="game-card" data-game="Garry's Mod">
+                <img src="images15.jpg" alt="Garry's Mod" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Garry's Mod</h3>
+                    <p class="game-description">Физическая песочница с бесконечными возможностями для творчества.</p>
+                    <div class="game-price">249 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description13.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DDraceNetwork -->
+            <div class="game-card" data-game="DDraceNetwork">
+                <img src="images11.jpg" alt="DDraceNetwork" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">DDraceNetwork</h3>
+                    <p class="game-description">Песочница с элементами платформера и возможностью создания карт.</p>
+                    <div class="game-price">199 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description9.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Инди-игры (4 уникальные игры) -->
+        <h2 id="indie" class="section-title">Инди-игры</h2>
+        <div class="games-grid">
+            <!-- Granny -->
+            <div class="game-card" data-game="Granny">
+                <img src="images5.jpg" alt="Granny" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Granny</h3>
+                    <p class="game-description">Хоррор-игра на выживание в доме с опасной бабушкой.</p>
+                    <div class="game-price">249 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description3.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Among Us -->
+            <div class="game-card" data-game="Among Us">
+                <img src="images16.jpg" alt="Among Us" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Among Us</h3>
+                    <p class="game-description">Социальная дедуктивная игра для 4-15 игроков.</p>
+                    <div class="game-price">199 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description14.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phasmophobia -->
+            <div class="game-card" data-game="Phasmophobia">
+                <img src="images12.jpg" alt="Phasmophobia" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Phasmophobia</h3>
+                    <p class="game-description">Инди-хоррор про охоту на призраков.</p>
+                    <div class="game-price">399 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description10.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Terraria -->
+            <div class="game-card" data-game="Terraria">
+                <img src="images14.jpg" alt="Terraria" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Terraria</h3>
+                    <p class="game-description">2D инди-песочница с элементами RPG.</p>
+                    <div class="game-price">299 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description12.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Открытый мир (4 уникальные игры) -->
+        <h2 id="openworld" class="section-title">Открытый мир</h2>
+        <div class="games-grid">
+            <!-- GTA San Andreas -->
+            <div class="game-card" data-game="GTA San Andreas">
+                <img src="images3.jpg" alt="GTA San Andreas" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Grand Theft Auto: San Andreas</h3>
+                    <p class="game-description">Огромный штат Сан-Андреас для свободного исследования.</p>
+                    <div class="game-price">1.599 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Red Dead Redemption 2 -->
+            <div class="game-card" data-game="Red Dead Redemption 2">
+                <img src="images4.jpg" alt="Red Dead Redemption 2" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Red Dead Redemption 2</h3>
+                    <p class="game-description">Огромный мир Дикого Запада для свободного исследования.</p>
+                    <div class="game-price">2.999 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description2.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Witcher 3 -->
+            <div class="game-card" data-game="The Witcher 3">
+                <img src="images6.jpg" alt="The Witcher 3" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">The Witcher 3: Wild Hunt</h3>
+                    <p class="game-description">Огромный фэнтезийный мир для исследования.</p>
+                    <div class="game-price">1.999 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description4.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cyberpunk 2077 -->
+            <div class="game-card" data-game="Cyberpunk 2077">
+                <img src="images7.jpg" alt="Cyberpunk 2077" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Cyberpunk 2077</h3>
+                    <p class="game-description">Открытый мир города Найт-Сити.</p>
+                    <div class="game-price">2.499 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description5.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Приключения (4 уникальные игры) -->
+        <h2 id="adventure" class="section-title">Приключения</h2>
+        <div class="games-grid">
+            <!-- The Witcher 3 -->
+            <div class="game-card" data-game="The Witcher 3">
+                <img src="images6.jpg" alt="The Witcher 3" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">The Witcher 3: Wild Hunt</h3>
+                    <p class="game-description">Приключения ведьмака в фэнтезийном мире.</p>
+                    <div class="game-price">1.999 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description4.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Elden Ring -->
+            <div class="game-card" data-game="Elden Ring">
+                <img src="images10.jpg" alt="Elden Ring" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Elden Ring</h3>
+                    <p class="game-description">Приключения в огромном dark-fantasy мире.</p>
+                    <div class="game-price">3.199 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description8.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Terraria -->
+            <div class="game-card" data-game="Terraria">
+                <img src="images14.jpg" alt="Terraria" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Terraria</h3>
+                    <p class="game-description">Приключения в 2D мире с исследованием подземелий.</p>
+                    <div class="game-price">299 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description12.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Starfield -->
+            <div class="game-card" data-game="Starfield">
+                <img src="images9.jpg" alt="Starfield" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Starfield</h3>
+                    <p class="game-description">Космические приключения в бесконечной вселенной.</p>
+                    <div class="game-price">3.499 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description7.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Предзаказ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Мультиплеер (4 уникальные игры) -->
+        <h2 id="multiplayer" class="section-title">Мультиплеер</h2>
+        <div class="games-grid">
+            <!-- Counter-Strike 2 -->
+            <div class="game-card" data-game="Counter-Strike 2">
+                <img src="images17.jpg" alt="Counter-Strike 2" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Counter-Strike 2</h3>
+                    <p class="game-description">Бесплатный тактический шутер от Valve.</p>
+                    <div class="game-price">Бесплатно</div>
+                    <div class="game-buttons">
+                        <a href="description15.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Скачать</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Among Us -->
+            <div class="game-card" data-game="Among Us">
+                <img src="images16.jpg" alt="Among Us" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Among Us</h3>
+                    <p class="game-description">Социальная дедукция для компании друзей.</p>
+                    <div class="game-price">199 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description14.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phasmophobia -->
+            <div class="game-card" data-game="Phasmophobia">
+                <img src="images12.jpg" alt="Phasmophobia" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Phasmophobia</h3>
+                    <p class="game-description">Кооперативный хоррор с друзьями.</p>
+                    <div class="game-price">399 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description10.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dead by Daylight -->
+            <div class="game-card" data-game="Dead by Daylight">
+                <img src="images13.jpg" alt="Dead by Daylight" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Dead by Daylight</h3>
+                    <p class="game-description">Асимметричный мультиплеер 4 на 1.</p>
+                    <div class="game-price">699 ₽</div>
+                    <div class="game-buttons">
+                        <a href="description11.html" class="btn-details">Подробнее</a>
+                        <a href="#" class="btn-buy">Купить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Кнопка для просмотра всех игр -->
+        <div style="text-align: center; margin: 50px 0;">
+            <a href="search.html" class="hero-btn" style="display: inline-block; padding: 15px 50px;">
+                Смотреть все игры
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="about.html" class="footer-link">О нас</a>
+            <a href="contacts.html" class="footer-link">Контакты</a>
+            <a href="support.html" class="footer-link">Поддержка</a>
+            <a href="privacy.html" class="footer-link">Политика конфиденциальности</a>
+        </div>
+        <div class="copyright">
+            &copy; 2026 MarketGame's Store. Все права защищены.
+        </div>
+    </footer>
+
+<script>
+        // База данных всех игр
+        let allGames = [];
+
+        // Элементы DOM
+        const searchInput = document.getElementById('gameSearch');
+        const searchResults = document.getElementById('searchResults');
+
+        // ====== ОСНОВНАЯ ФУНКЦИЯ ЗАГРУЗКИ ИГР ======
+        function loadGames() {
+            // 1. Добавляем игры из админки в каталог
+            addAdminGamesToCatalog();
+            
+            // 2. Загружаем все игры из localStorage
+            const storedGames = JSON.parse(localStorage.getItem('allGames'));
+            
+            // 3. Если в localStorage есть игры, используем их
+            if (storedGames && storedGames.length > 0) {
+                allGames = storedGames;
+            } else {
+                // 4. Если нет, используем базовый список
+                allGames = [
+                    {
+                        name: "GTA San Andreas",
+                        link: "description.html",
+                        aliases: ["gta", "gta san andreas", "gta sa", "grand theft auto", "сан андреас"],
+                        genres: ["Экшен", "Открытый мир", "Песочница", "Приключения"]
+                    },
+                    {
+                        name: "Red Dead Redemption 2",
+                        link: "description2.html",
+                        aliases: ["rdr2", "red dead", "red dead redemption", "ред дэд"],
+                        genres: ["Экшен", "Открытый мир", "Приключения"]
+                    },
+                    {
+                        name: "Granny",
+                        link: "description3.html",
+                        aliases: ["granny", "гранни", "бабушка"],
+                        genres: ["Хоррор", "Инди"]
+                    },
+                    {
+                        name: "The Witcher 3",
+                        link: "description4.html",
+                        aliases: ["witcher", "the witcher", "ведьмак", "ведьмак 3"],
+                        genres: ["RPG", "Экшен", "Открытый мир", "Приключения"]
+                    },
+                    {
+                        name: "Cyberpunk 2077",
+                        link: "description5.html",
+                        aliases: ["cyberpunk", "киберпанк", "cyberpunk 2077"],
+                        genres: ["RPG", "Экшен", "Открытый мир"]
+                    },
+                    {
+                        name: "Minecraft",
+                        link: "description6.html",
+                        aliases: ["minecraft", "майнкрафт", "майн"],
+                        genres: ["Песочница", "Инди", "Мультиплеер", "Экшен", "Открытый мир", "Приключения"]
+                    },
+                    {
+                        name: "Starfield",
+                        link: "description7.html",
+                        aliases: ["starfield", "старфилд", "космос"],
+                        genres: ["RPG", "Открытый мир"]
+                    },
+                    {
+                        name: "Elden Ring",
+                        link: "description8.html",
+                        aliases: ["elden ring", "элден ринг", "elden"],
+                        genres: ["RPG", "Экшен", "Приключения"]
+                    },
+                    {
+                        name: "DDraceNetwork",
+                        link: "description9.html",
+                        aliases: ["ddnet", "dd", "ddrace", "ddracenetwork"],
+                        genres: ["Инди", "Мультиплеер", "Платформер", "Экшен"]
+                    },
+                    {
+                        name: "Phasmophobia",
+                        link: "description10.html",
+                        aliases: ["phasmo", "фазмо", "фасмофобия", "призраки"],
+                        genres: ["Хоррор", "Кооперативная", "Мультиплеер", "Инди", "Экшен"]
+                    },
+                    {
+                        name: "Dead by Daylight",
+                        link: "description11.html",
+                        aliases: ["dbd", "dead by daylight", "дбд", "дэд бай дэклайт"],
+                        genres: ["Хоррор", "Асимметричная", "Мультиплеер"]
+                    },
+                    {
+                        name: "Terraria",
+                        link: "description12.html",
+                        aliases: ["terraria", "террария", "2d майнкрафт"],
+                        genres: ["Песочница", "Инди", "РPG", "Мультиплеер", "Приключения"]
+                    },
+                    {
+                        name: "Garry's Mod",
+                        link: "description13.html",
+                        aliases: ["gmod", "garry's mod", "гаррис мод", "гмод"],
+                        genres: ["Песочница", "Физика", "Мультиплеер", "Инди"]
+                    },
+                    {
+                        name: "Among Us",
+                        link: "description14.html",
+                        aliases: ["among us", "аманг ас", "среди нас", "амунг ас"],
+                        genres: ["Мультиплеер", "Социальная", "Инди", "Хоррор", "Экшен"]
+                    },
+                    {
+                        name: "Counter-Strike 2",
+                        link: "description15.html",
+                        aliases: ["cs2", "counter strike", "кс2", "контстрайк"],
+                        genres: ["Мультиплеер", "Шутер", "Тактическая", "Экшен"]
+                    }
+                ];
+                
+                // Сохраняем базовый список в localStorage
+                localStorage.setItem('allGames', JSON.stringify(allGames));
+            }
+            
+            console.log('🎮 Загружено игр:', allGames.length);
+        }
+
+        // ====== ФУНКЦИЯ ДОБАВЛЕНИЯ ИГР ИЗ АДМИНКИ ======
+        function addAdminGamesToCatalog() {
+            try {
+                const adminGames = JSON.parse(localStorage.getItem('adminGames')) || [];
+                let siteGames = JSON.parse(localStorage.getItem('allGames')) || [];
+                
+                if (adminGames.length > 0) {
+                    adminGames.forEach((game, index) => {
+                        const gameExists = siteGames.some(g => 
+                            g.name.toLowerCase() === game.title.toLowerCase()
+                        );
+                        
+                        if (!gameExists) {
+                            const descriptionLink = `description${siteGames.length + 1}.html`;
+                            
+                            const newGame = {
+                                name: game.title,
+                                link: descriptionLink,
+                                aliases: [
+                                    game.title.toLowerCase(),
+                                    game.title.toLowerCase().replace(/:/g, '').replace(/\./g, ''),
+                                    ...game.title.toLowerCase().split(' '),
+                                    ...game.title.toLowerCase().split(':'),
+                                    ...game.title.toLowerCase().split('.'),
+                                    ...(game.title.toLowerCase().includes('gta') ? ['gta v', 'gta 5', 'гта 5', 'гта в'] : []),
+                                    ...(game.title.toLowerCase().includes('grand theft') ? ['gta', 'гта'] : [])
+                                ].filter(alias => alias && alias.length > 1 && alias !== ':'),
+                                genres: [game.genre]
+                            };
+                            
+                            siteGames.push(newGame);
+                        }
+                    });
+                    
+                    // Сохраняем обратно в localStorage
+                    localStorage.setItem('allGames', JSON.stringify(siteGames));
+                }
+            } catch (e) {
+                console.error('Ошибка при добавлении игр:', e);
+            }
+        }
+
+        // ====== ПРОВЕРКА АВТОРИЗАЦИИ ======
+        function checkAuthOnMainPage() {
+            const loginBtn = document.querySelector('.login-btn');
+            if (!loginBtn) return;
+            
+            // 1. Проверяем, есть ли данные входа
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            
+            if (isLoggedIn) {
+                // 2. Получаем данные пользователя
+                const currentUser = JSON.parse(localStorage.getItem('currentUser')) || 
+                                   JSON.parse(localStorage.getItem('user'));
+                
+                if (currentUser) {
+                    // 3. Формируем имя пользователя
+                    let username = 'Пользователь';
+                    if (currentUser.firstName) {
+                        username = currentUser.firstName;
+                        if (currentUser.lastName) {
+                            username += ` ${currentUser.lastName.charAt(0)}.`;
+                        }
+                    } else if (currentUser.email) {
+                        username = currentUser.email.split('@')[0];
+                    }
+                    
+                    // 4. Обновляем кнопку
+                    loginBtn.innerHTML = `👤 ${username}`;
+                    loginBtn.href = 'dashboard.html';
+                    loginBtn.style.backgroundColor = '#333';
+                    loginBtn.style.color = '#fff';
+                    loginBtn.style.display = 'flex';
+                    loginBtn.style.alignItems = 'center';
+                    loginBtn.style.gap = '8px';
+                    
+                    // 5. Убираем стандартное поведение, чтобы сразу вело в кабинет
+                    loginBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        window.location.href = 'dashboard.html';
+                    });
+                    
+                    console.log('✅ Пользователь авторизован:', username);
+                }
+            } else {
+                // Пользователь не авторизован
+                loginBtn.innerHTML = 'Войти';
+                loginBtn.href = 'login.html';
+                loginBtn.style.backgroundColor = '#007bff';
+                loginBtn.style.color = 'white';
+                console.log('⚠️ Пользователь не авторизован');
+            }
+        }
+
+        // ====== ПОИСК ИГР ======
+        function searchGames(query) {
+            if (!query.trim()) {
+                return [];
+            }
+            
+            const lowerQuery = query.toLowerCase();
+            const results = [];
+            
+            allGames.forEach(game => {
+                // Проверяем основное название
+                if (game.name.toLowerCase().includes(lowerQuery)) {
+                    if (!results.includes(game)) results.push(game);
+                } else {
+                    // Проверяем псевдонимы
+                    for (let alias of game.aliases) {
+                        if (alias.toLowerCase().includes(lowerQuery)) {
+                            if (!results.includes(game)) results.push(game);
+                            break;
+                        }
+                    }
+                }
+                
+                // Проверяем жанры
+                if (game.genres) {
+                    for (let genre of game.genres) {
+                        if (genre.toLowerCase().includes(lowerQuery)) {
+                            if (!results.includes(game)) results.push(game);
+                            break;
+                        }
+                    }
+                }
+            });
+            
+            return results;
+        }
+
+        // Показать результаты поиска
+        function showSearchResults(results) {
+            searchResults.innerHTML = '';
+            
+            if (results.length === 0) {
+                const noResults = document.createElement('div');
+                noResults.className = 'no-results';
+                noResults.textContent = 'Игры не найдены';
+                searchResults.appendChild(noResults);
+            } else {
+                results.forEach(game => {
+                    const link = document.createElement('a');
+                    link.className = 'search-result-item';
+                    link.href = game.link;
+                    link.textContent = game.name;
+                    searchResults.appendChild(link);
+                });
+            }
+            
+            searchResults.style.display = 'block';
+        }
+
+        // Скрыть результаты поиска
+        function hideSearchResults() {
+            searchResults.style.display = 'none';
+        }
+
+        // Инициализация поиска
+        function initSearch() {
+            if (!searchInput || !searchResults) return;
+            
+            // Обработчик ввода
+            searchInput.addEventListener('input', function() {
+                const query = this.value;
+                if (query.length < 1) {
+                    hideSearchResults();
+                    return;
+                }
+                
+                const results = searchGames(query);
+                showSearchResults(results);
+            });
+            
+            // Скрыть результаты при клике вне поля
+            document.addEventListener('click', function(e) {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    hideSearchResults();
+                }
+            });
+        }
+
+        // Кнопка "Найти" - перенаправление на страницу игры
+        function performSearch() {
+            const query = searchInput.value.trim();
+            if (!query) return;
+            
+            const results = searchGames(query);
+            if (results.length > 0) {
+                window.location.href = results[0].link;
+            } else {
+                alert('Игра "' + query + '" не найдена в нашем каталоге.');
+            }
+        }
+
+        // ====== ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ СТРАНИЦЫ ======
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Главная страница загружается...');
+            
+            // 1. Проверяем авторизацию
+            checkAuthOnMainPage();
+            
+            // 2. Загружаем игры
+            loadGames();
+            
+            // 3. Инициализируем поиск
+            initSearch();
+            
+            // 4. Поиск по нажатию Enter
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            
+            // 5. Плавная прокрутка к жанрам
+            document.querySelectorAll('.genre-link, .nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetHref = this.getAttribute('href');
+                    
+                    // Если ссылка ведет на # (якорь на этой странице)
+                    if (targetHref.startsWith('#')) {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(targetHref);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // 6. Логика для кнопки "Купить"
+            document.querySelectorAll('.btn-buy').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const gameTitle = this.closest('.game-card').querySelector('.game-title').textContent;
+                    const gamePrice = this.closest('.game-card').querySelector('.game-price').textContent;
+                    
+                    // Проверяем авторизацию перед покупкой
+                    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+                    
+                    if (!isLoggedIn) {
+                        if (confirm('Для покупки нужно войти в аккаунт. Перейти на страницу входа?')) {
+                            window.location.href = 'login.html';
+                        }
+                        return;
+                    }
+                    
+                    alert(`✅ Игра "${gameTitle}" добавлена в корзину!\nЦена: ${gamePrice}`);
+                    
+                    // Сохраняем покупку в историю
+                    const purchase = {
+                        game: gameTitle,
+                        price: gamePrice,
+                        date: new Date().toLocaleDateString('ru-RU')
+                    };
+                    
+                    let purchases = JSON.parse(localStorage.getItem('purchases')) || [];
+                    purchases.push(purchase);
+                    localStorage.setItem('purchases', JSON.stringify(purchases));
+                });
+            });
+            
+            // 7. Подсветка текущей категории при прокрутке
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('h2.section-title');
+                const navLinks = document.querySelectorAll('.nav-link');
+                
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 150;
+                    if (scrollY >= sectionTop) {
+                        currentSection = '#' + section.parentElement.id;
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.style.color = '#fff';
+                    if (link.getAttribute('href') === currentSection) {
+                        link.style.color = '#ff0000';
+                    }
+                });
+            });
+            
+            // 8. Отладка
+            debugLocalStorage();
+        });
+
+        // ====== ОТЛАДКА ======
+        function debugLocalStorage() {
+            console.log('=== DEBUG LOCALSTORAGE ===');
+            console.log('isLoggedIn:', localStorage.getItem('isLoggedIn'));
+            console.log('currentUser:', JSON.parse(localStorage.getItem('currentUser')));
+            console.log('user:', JSON.parse(localStorage.getItem('user')));
+            console.log('username:', localStorage.getItem('username'));
+            console.log('adminGames:', JSON.parse(localStorage.getItem('adminGames')));
+            console.log('allGames:', JSON.parse(localStorage.getItem('allGames')));
+            console.log('==========================');
+        }
+    </script>
+</body>
+</html>

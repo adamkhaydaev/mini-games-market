@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">  
+    <title>MarketGame's - Garry's Mod</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .header-line {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+            padding: 10px 40px;
+            background-color: #222;
+            border-bottom: 2px solid #FF6347;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            flex: 1; 
+        }
+
+        h1 {
+            color: #FF6347;
+            margin: 0;
+            font-family: 'Arial Black', sans-serif;
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .page-title {
+            color: #fff;
+            margin: 0;
+            font-size: 22px;
+            text-align: center;
+            flex: 1;
+        }
+
+        .header-spacer {
+            flex: 1;
+        }
+
+        .container {
+            position: static;
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .game-main-info {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: start;
+        }
+
+        .game-banner {
+            width: 100%;
+            height: auto;
+            max-width: 700px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            display: block;
+        }
+
+        .buy-card {
+            background-color: #252525;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            height: fit-content;
+        }
+
+        .price {
+            font-size: 32px;
+            font-weight: bold;
+            color: #FF6347;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .buy-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #FF6347;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .buy-button:hover {
+            background-color: #FF7F50;
+            box-shadow: 0 0 15px rgba(255, 99, 71, 0.4);
+        }
+
+        .section-title {
+            color: #FF6347;
+            border-left: 4px solid #FF6347;
+            padding-left: 15px;
+            margin: 40px 0 20px 0;
+            text-transform: uppercase;
+            font-size: 20px;
+        }
+
+        .description-text {
+            color: #ccc;
+            font-size: 17px;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            background: #222;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .spec-item b {
+            color: #FF6347;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: #555;
+            border-top: 1px solid #222;
+            margin-top: 50px;
+        }
+        
+        .section-header {
+            background-color: #222;
+            padding: 15px 40px;
+            margin: 20px 0;
+            border-bottom: 2px solid #FF6347;
+            border-top: 1px solid #333;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            color: #fff;
+            margin: 0;
+            font-size: 22px;
+            font-weight: normal;
+        }
+        
+        .features-list {
+            color: #ccc;
+            list-style-type: square;
+            padding-left: 20px;
+            line-height: 1.6;
+        }
+        
+        .features-list li {
+            margin-bottom: 12px;
+        }
+        
+        .features-list strong {
+            color: #FFA07A;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-line">
+        <a href="Adam.html" class="logo-section">
+            <img src="images2.png" alt="Logo" style="width: 50px; height: 50px; border-radius: 5px;">
+            <h1>MarketGame's</h1>
+        </a>
+        <h2 class="page-title">Garry's Mod</h2>
+        <div class="header-spacer"></div>
+    </header>
+
+    <div class="container">
+        <div class="game-main-info">
+            <div>
+                <img src="images15.jpg" alt="Garry's Mod" class="game-banner">
+            </div>
+
+            <div class="buy-card">
+                <span class="price">249 ₽</span>
+                <a href="#" class="buy-button" style="padding: 12px 7px;">
+                    <p style="margin: 5px;">Купить сейчас</p>
+                </a>
+                <p style="font-size: 15px; color: #888; margin-top: 14px;">
+                    ✅ Очень быстрое оформление заказа<br>
+                    ✅ Доступ к Workshop с тысячами модов<br>
+                    ✅ Мультиплеер без ограничений<br>
+                    ✅ Регулярные обновления
+                </p>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <h2><b>Описание игры</b></h2>
+        </div>
+
+        <h3 class="section-title">Об игре</h3>
+        <div class="game-description">
+            <p><strong>Garry's Mod</strong> — это физическая песочница, которая не устанавливает игроку никаких целей. Вместо этого она предоставляет инструменты для создания чего угодно: от простых конструкций до сложных механизмов, мини-игр и целых игровых режимов.</p>
+            <p>Используйте физический движок Source для создания невероятных конструкций, запускайте пользовательские игровые режимы или просто экспериментируйте с физикой объектов. Ограничением является только ваше воображение.</p>
+        </div>
+
+        <h3 class="section-title">Особенности издания</h3>
+        <ul class="features-list">
+            <li><strong>Полная свобода творчества:</strong> Создавайте всё, что придумаете, без ограничений по геймплею.</li>
+            <li><strong>Продвинутая физика:</strong> Реалистичная физика объектов, веревок, петель и других элементов.</li>
+            <li><strong>Мощный редактор:</strong> Инструменты для создания поз, анимаций и сложных конструкций.</li>
+            <li><strong>Workshop поддержка:</strong> Тысячи модов, карт и игровых режимов от сообщества.</li>
+            <li><strong>Мультиплеер:</strong> Играйте с друзьями на собственных серверах с пользовательским контентом.</li>
+        </ul>
+
+        <h3 class="section-title">Системные требования (ПК)</h3>
+        <div class="specs-grid">
+            <div class="spec-item">
+                <p><b>ОС:</b> Windows XP/Vista/7/8/10</p>
+                <p><b>Процессор:</b> 2 GHz</p>
+                <p><b>Оперативная память:</b> 4 GB RAM</p>
+            </div>
+            <div class="spec-item">
+                <p><b>Видеокарта:</b> 512 MB VRAM, Shader Model 3.0</p>
+                <p><b>Место на диске:</b> 5 GB</p>
+                <p><b>Дополнительно:</b> DirectX 9.0c, требуется Source SDK Base 2007</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        &copy; 2026 MarketGame's Store. Все права защищены.
+    </footer>
+
+</body>
+</html>

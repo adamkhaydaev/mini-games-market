@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">  
+    <title>MarketGame's - Red Dead Redemption 2</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .header-line {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+            padding: 10px 40px;
+            background-color: #222;
+            border-bottom: 2px solid #1E7F34;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            flex: 1; 
+        }
+
+        h1 {
+            color: #1E7F34;
+            margin: 0;
+            font-family: 'Arial Black', sans-serif;
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .page-title {
+            color: #fff;
+            margin: 0;
+            font-size: 22px;
+            text-align: center;
+            flex: 1;
+        }
+
+        .header-spacer {
+            flex: 1;
+        }
+
+        .container {
+            position: static;
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .game-main-info {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: start;
+        }
+
+        .game-banner {
+            width: 100%;
+            height: auto;
+            max-width: 700px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            display: block;
+        }
+
+        .buy-card {
+            background-color: #252525;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            height: fit-content;
+        }
+
+        .price {
+            font-size: 32px;
+            font-weight: bold;
+            color: #8B0000;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .buy-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #8B0000;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .buy-button:hover {
+            background-color: #A52A2A;
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.4);
+        }
+
+        .section-title {
+            color: #8B0000;
+            border-left: 4px solid #8B0000;
+            padding-left: 15px;
+            margin: 40px 0 20px 0;
+            text-transform: uppercase;
+            font-size: 20px;
+        }
+
+        .description-text {
+            color: #ccc;
+            font-size: 17px;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            background: #222;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .spec-item b {
+            color: #8B0000;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: #555;
+            border-top: 1px solid #222;
+            margin-top: 50px;
+        }
+        
+        .section-header {
+            background-color: #222;
+            padding: 15px 40px;
+            margin: 20px 0;
+            border-bottom: 2px solid #8B0000;
+            border-top: 1px solid #333;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            color: #fff;
+            margin: 0;
+            font-size: 22px;
+            font-weight: normal;
+        }
+        
+        .features-list {
+            color: #ccc;
+            list-style-type: square;
+            padding-left: 20px;
+            line-height: 1.6;
+        }
+        
+        .features-list li {
+            margin-bottom: 12px;
+        }
+        
+        .features-list strong {
+            color: #D2691E;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-line">
+        <a href="Adam.html" class="logo-section">
+            <img src="images2.png" alt="Logo" style="width: 50px; height: 50px; border-radius: 5px;">
+            <h1>MarketGame's</h1>
+        </a>
+        <h2 class="page-title">Minecraft</h2>
+        <div class="header-spacer"></div>
+    </header>
+
+    <div class="container">
+        <div class="game-main-info">
+            <div>
+                <img src="images8.jpg" class="game-banner">
+            </div>
+
+            <div class="buy-card">
+                <span class="price">899 ₽</span>
+                <a href="#" class="buy-button" style="padding: 12px 7px;">
+                    <p style="margin: 5px;">Купить сейчас</p>
+                </a>
+                <p style="font-size: 15px; color: #888; margin-top: 14px;">
+                    ✅ Очень быстрое оформление заказа<br>
+                    ✅ Аккаунт Minecraft с лицензией<br>
+                    ✅ Пожизненный доступ<br>
+                    ✅ Поддержка всех платформ
+                </p>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <h2><b>Описание игры</b></h2>
+        </div>
+
+        <h3 class="section-title">Об игре</h3>
+        <div class="game-description">
+            <p><strong>Minecraft</strong> — это легендарная песочница с бесконечными возможностями для творчества, исследования и выживания. Игра позволяет вам строить, исследовать и выживать в процедурно генерируемом мире, состоящем из блоков.</p>
+            <p>Добывайте ресурсы, создавайте инструменты, стройте укрытия и исследуйте разнообразные биомы в одиночку или с друзьями. В режиме выживания сражайтесь с монстрами, а в творческом — стройте всё, что пожелает ваше воображение.</p>
+        </div>
+
+        <h3 class="section-title">Особенности издания</h3>
+        <ul class="features-list">
+            <li><strong>Бесконечный мир:</strong> Процедурно генерируемый мир с разнообразными биомами, пещерами и структурами.</li>
+            <li><strong>Режимы игры:</strong> Выживание, Творческий, Приключение, Хардкор и многопользовательский.</li>
+            <li><strong>Мультиплатформенность:</strong> Играйте на ПК, консолях, мобильных устройствах с кроссплатформенной игрой.</li>
+            <li><strong>Моды и дополнения:</strong> Огромное сообщество создателей модификаций, карт и текстурпаков.</li>
+            <li><strong>Регулярные обновления:</strong> Постоянные бесплатные обновления с новым контентом от разработчиков.</li>
+        </ul>
+
+        <h3 class="section-title">Системные требования (ПК Java Edition)</h3>
+        <div class="specs-grid">
+            <div class="spec-item">
+                <p><b>ОС:</b> Windows 7 и выше (64-bit)</p>
+                <p><b>Процессор:</b> Intel Core i3-3210 / AMD A8-7600</p>
+                <p><b>Оперативная память:</b> 4 GB RAM</p>
+            </div>
+            <div class="spec-item">
+                <p><b>Видеокарта:</b> Intel HD Graphics 4000 / AMD Radeon R5</p>
+                <p><b>Место на диске:</b> 2 GB (рекомендуется 4 GB для модов)</p>
+                <p><b>Дополнительно:</b> Java 8 или новее</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        &copy; 2026 MarketGame's Store. Все права защищены.
+    </footer>
+
+</body>
+</html>

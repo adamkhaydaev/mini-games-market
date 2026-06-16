@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>MarketGame's — Все игры</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .header-results {
+            border-bottom: 2px solid #ff0000;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h2 { 
+            margin: 0; 
+            color: #fff; 
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .red-text { 
+            color: #ff0000; 
+            font-size: 32px;
+        }
+
+        .back-link {
+            color: #888;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: 0.3s;
+            padding: 10px 20px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background-color: #222;
+        }
+        
+        .back-link:hover { 
+            color: #ff0000; 
+            border-color: #ff0000;
+            background-color: #2a2a2a;
+        }
+
+        .results-grid {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .game-card {
+            background: #222;
+            border: 1px solid #333;
+            border-radius: 12px;
+            width: 280px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            border-color: #ff0000;
+            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3);
+        }
+
+        .game-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #444;
+        }
+
+        .game-card h3 {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #fff;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .game-card p {
+            color: #aaa;
+            font-size: 14px;
+            height: 60px;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .more-btn {
+            display: block;
+            background-color: #ff0000;
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+
+        .more-btn:hover {
+            background-color: #cc0000;
+            transform: scale(1.05);
+        }
+
+        .footer {
+            margin-top: 60px;
+            color: #555;
+            font-size: 14px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        /* Цвета для кнопок по играм */
+        .btn-gta { background-color: #228B22; }
+        .btn-gta:hover { background-color: #196619; }
+        
+        .btn-rdr2 { background-color: #8B0000; }
+        .btn-rdr2:hover { background-color: #660000; }
+        
+        .btn-granny { background-color: #4B0082; }
+        .btn-granny:hover { background-color: #380066; }
+        
+        .btn-witcher { background-color: #2A623D; }
+        .btn-witcher:hover { background-color: #1e452c; }
+        
+        .btn-cyberpunk { background-color: #FF6B35; }
+        .btn-cyberpunk:hover { background-color: #e05a2a; }
+        
+        .btn-minecraft { background-color: #1E7F34; }
+        .btn-minecraft:hover { background-color: #166428; }
+        
+        .btn-starfield { background-color: #4A90E2; }
+        .btn-starfield:hover { background-color: #3a7bc2; }
+        
+        .btn-elden { background-color: #8A2BE2; }
+        .btn-elden:hover { background-color: #7120c2; }
+        
+        .btn-ddnet { background-color: #FF4500; }
+        .btn-ddnet:hover { background-color: #cc3700; }
+        
+        .btn-phasmo { background-color: #4B0082; }
+        .btn-phasmo:hover { background-color: #380066; }
+        
+        .btn-dbd { background-color: #DC143C; }
+        .btn-dbd:hover { background-color: #b01030; }
+        
+        .btn-terraria { background-color: #DAA520; color: #000; }
+        .btn-terraria:hover { background-color: #c1901c; color: #000; }
+        
+        .btn-gmod { background-color: #FF6347; }
+        .btn-gmod:hover { background-color: #e0553c; }
+        
+        .btn-amongus { background-color: #32CD32; color: #000; }
+        .btn-amongus:hover { background-color: #2bb82b; color: #000; }
+        
+        .btn-cs2 { background-color: #FFD700; color: #000; }
+        .btn-cs2:hover { background-color: #e6c300; color: #000; }
+    </style>
+</head>
+
+<body>
+
+    <div class="header-results">
+        <h2>Все игры в каталоге: <span class="red-text">15</span></h2>
+        <a href="Adam.html" class="back-link">← На главную</a>
+    </div>
+
+    <div class="results-grid">
+
+        <!-- GTA San Andreas -->
+        <div class="game-card">
+            <img src="images3.jpg" alt="Grand Theft Auto: San Andreas">
+            <h3>Grand Theft Auto: San Andreas</h3>
+            <p>Культовая игра про жизнь гангстера в 90-х годах в Сан-Андреасе.</p>
+            <a href="description.html" class="more-btn btn-gta">Подробнее</a>
+        </div>
+
+        <!-- Red Dead Redemption 2 -->
+        <div class="game-card">
+            <img src="images4.jpg" alt="Red Dead Redemption 2">
+            <h3>Red Dead Redemption 2</h3>
+            <p>Эпическая история бандита Артура Моргана на Диком Западе.</p>
+            <a href="description2.html" class="more-btn btn-rdr2">Подробнее</a>
+        </div>
+
+        <!-- Granny -->
+        <div class="game-card">
+            <img src="images5.jpg" alt="Granny">
+            <h3>Granny</h3>
+            <p>Хоррор-игра на выживание в доме с опасной бабушкой.</p>
+            <a href="description3.html" class="more-btn btn-granny">Подробнее</a>
+        </div>
+
+        <!-- The Witcher 3 -->
+        <div class="game-card">
+            <img src="images6.jpg" alt="The Witcher 3">
+            <h3>The Witcher 3: Wild Hunt</h3>
+            <p>Эпическая RPG о ведьмаке Геральте в поисках Цири.</p>
+            <a href="descriptions/description4.html" class="more-btn btn-witcher">Подробнее</a>
+        </div>
+
+        <!-- Cyberpunk 2077 -->
+        <div class="game-card">
+            <img src="images7.jpg" alt="Cyberpunk 2077">
+            <h3>Cyberpunk 2077</h3>
+            <p>Футуристическая RPG в мире киберпанка от создателей Ведьмака.</p>
+            <a href="description5.html" class="more-btn btn-cyberpunk">Подробнее</a>
+        </div>
+
+        <!-- Minecraft -->
+        <div class="game-card">
+            <img src="images8.jpg" alt="Minecraft">
+            <h3>Minecraft</h3>
+            <p>Легендарная песочница с бесконечными возможностями для творчества.</p>
+            <a href="description6.html" class="more-btn btn-minecraft">Подробнее</a>
+        </div>
+
+        <!-- Starfield -->
+        <div class="game-card">
+            <img src="images9.jpg" alt="Starfield">
+            <h3>Starfield</h3>
+            <p>Новая космическая RPG от создателей Skyrim и Fallout.</p>
+            <a href="description7.html" class="more-btn btn-starfield">Подробнее</a>
+        </div>
+
+        <!-- Elden Ring -->
+        <div class="game-card">
+            <img src="images10.jpg" alt="Elden Ring">
+            <h3>Elden Ring</h3>
+            <p>Эпическая dark-fantasy RPG от создателей Dark Souls.</p>
+            <a href="description8.html" class="more-btn btn-elden">Подробнее</a>
+        </div>
+        
+        <!-- DDraceNetwork -->
+        <div class="game-card">
+            <img src="images11.jpg" alt="DDraceNetwork">
+            <h3>DDraceNetwork</h3>
+            <p>Кооперативная платформерная игра на основе Teeworlds.</p>
+            <a href="description9.html" class="more-btn btn-ddnet">Подробнее</a>
+        </div>
+
+        <!-- Phasmophobia -->
+        <div class="game-card">
+            <img src="images12.jpg" alt="Phasmophobia">
+            <h3>Phasmophobia</h3>
+            <p>Кооперативный хоррор про охоту на призраков с друзьями.</p>
+            <a href="description10.html" class="more-btn btn-phasmo">Подробнее</a>
+        </div>
+
+        <!-- Dead by Daylight -->
+        <div class="game-card">
+            <img src="images13.jpg" alt="Dead by Daylight">
+            <h3>Dead by Daylight</h3>
+            <p>Асимметричный хоррор 4 на 1 от Behaviour Interactive.</p>
+            <a href="description11.html" class="more-btn btn-dbd">Подробнее</a>
+        </div>
+
+        <!-- Terraria -->
+        <div class="game-card">
+            <img src="images14.jpg" alt="Terraria">
+            <h3>Terraria</h3>
+            <p>2D песочница с элементами RPG и строительством.</p>
+            <a href="description12.html" class="more-btn btn-terraria">Подробнее</a>
+        </div>
+
+        <!-- Garry's Mod -->
+        <div class="game-card">
+            <img src="images15.jpg" alt="Garry's Mod">
+            <h3>Garry's Mod</h3>
+            <p>Физическая песочница с бесконечными возможностями для творчества.</p>
+            <a href="description13.html" class="more-btn btn-gmod">Подробнее</a>
+        </div>
+
+        <!-- Among Us -->
+        <div class="game-card">
+            <img src="images16.jpg" alt="Among Us">
+            <h3>Among Us</h3>
+            <p>Социальная дедуктивная игра для 4-15 игроков.</p>
+            <a href="description14.html" class="more-btn btn-amongus">Подробнее</a>
+        </div>
+
+        <!-- Counter-Strike 2 -->
+        <div class="game-card">
+            <img src="images17.jpg" alt="Counter-Strike 2">
+            <h3>Counter-Strike 2</h3>
+            <p>Бесплатный тактический шутер от Valve.</p>
+            <a href="description15.html" class="more-btn btn-cs2">Подробнее</a>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        MarketGame's Store © 2026. Все права защищены.
+    </div>
+
+</body>
+</html>
